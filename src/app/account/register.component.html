@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="lastName">Nombre</label>
+                <label for="lastName">Apellido</label>
                 <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
                 <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
                     <div *ngIf="f.lastName.errors.required">Apellido</div>
