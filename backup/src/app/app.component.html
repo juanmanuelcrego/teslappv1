@@ -1,0 +1,23 @@
+<section class="jc-header" *ngIf="user">
+  <div class="title">
+      <label>Teslapp</label>
+  </div>
+  <nav class="navbar navbar-expand" *ngIf="user">
+      <div class="navbar-nav">
+          <a class="btn text-white" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="fas fa-home icon"></i></a>
+          <label>|</label>
+          <a class="btn text-white" (click)="logout()"><i class="fas fa-sign-out-alt icon"></i></a>
+      </div>
+  </nav>
+</section>
+
+<div class="app-container">
+  <alert></alert>
+  <router-outlet></router-outlet>
+</div>
+
+<div class="text-center mt-4">
+  <p>
+      Powered by <a class="text-danger" href="https://www.custosol.com" target="_blank">Custosol</a>
+  </p>
+</div>

@@ -1,0 +1,33 @@
+﻿<h1>Baterías</h1>
+<a routerLink="add" class="btn btn-sm btn-danger mb-2">Agregar batería</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">Nombre</th>
+            <th style="width: 30%">Voltaje</th>
+            <th style="width: 30%">Temperatura</th>
+            <th style="width: 30%">Fecha</th>
+            <th style="width: 10%">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let bateria of baterias">
+            <td>{{bateria.name}}</td>
+            <td>{{bateria.voltaje}}</td>
+            <td>{{bateria.temperatura}}</td>
+            <td>{{todayString | date}}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{bateria.id}}" class="btn btn-sm btn-danger mr-1">Editar</a>
+                <button (click)="deleteBateria(bateria.id)" class="btn btn-sm btn-dark" [disabled]="bateria.isDeleting">
+                    <span *ngIf="bateria.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!bateria.isDeleting" class='p-0'>Eliminar</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!baterias">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

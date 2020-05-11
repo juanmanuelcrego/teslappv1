@@ -1,0 +1,29 @@
+﻿<h3 *ngIf="isAddMode" class="text-center">Agregar línea</h3>
+<h3 *ngIf="!isAddMode" class="text-center">Editar línea</h3>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="name">Nombre</label>
+            <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">El campo del nombre es obligatorio!</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="tension">Tensión</label>
+            <input type="number" formControlName="tension" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tension.errors }" />
+            <div *ngIf="submitted && f.tension.errors" class="invalid-feedback">
+                <div *ngIf="f.tension.errors.required">El campo de la tensión es obligatorio!</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center">
+        <button [disabled]="loading" class="btn btn-danger mr-2">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Guardar
+        </button>
+        <a routerLink="/lineas" class="btn btn-dark">Cancelar</a>
+    </div>
+</form>

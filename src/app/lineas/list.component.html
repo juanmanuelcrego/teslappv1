@@ -1,0 +1,31 @@
+﻿<h1>Corriente</h1>
+<a routerLink="add" class="btn btn-sm btn-danger mb-2">Agregar línea</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">Nombre</th>
+            <th style="width: 30%">Tensión</th>
+            <th style="width: 30%">Fecha</th>
+            <th style="width: 10%">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let linea of lineas">
+            <td>{{linea.name}}</td>
+            <td>{{linea.tension}}</td>
+            <td>{{todayString | date}}</td>
+            <td style="white-space: nowrap">
+                <a routerLink="edit/{{linea.id}}" class="btn btn-sm btn-danger mr-1">Editar</a>
+                <button (click)="deleteLinea(linea.id)" class="btn btn-sm btn-dark" [disabled]="linea.isDeleting">
+                    <span *ngIf="linea.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!linea.isDeleting" class='p-0'>Eliminar</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!lineas">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

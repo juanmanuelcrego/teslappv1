@@ -1,0 +1,14 @@
+.app-container {
+    background: #ED213A; 
+    background: -webkit-linear-gradient(to top, #93291E, #ED213A);  
+    background: linear-gradient(to top, #93291E, #ED213A);
+}
+
+.h1-title {
+    cursor: default;
+    text-align: center;
+    font-family: 'Major Mono Display', monospace;
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.9);
+}

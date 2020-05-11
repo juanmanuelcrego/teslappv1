@@ -1,0 +1,29 @@
+﻿<h1 class="text-center h1-title">Teslapp</h1>
+<div class="card shadow p-3 mb-5 bg-white rounded">
+    <div class="card-body">
+        <h5 class="text-center text-secondary">Iniciar sesión</h5>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="username" class="text-secondary">Usuario</label>
+                <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div *ngIf="f.username.errors.required">Campo requerido</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="text-secondary">Contraseña</label>
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Contraseña</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-danger btn-lg btn-block">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Ingresar
+                </button>
+                <a hidden routerLink="../register" class="btn btn-dark btn-lg btn-block">Registrarme!</a>
+            </div>
+        </form>
+    </div>
+</div>

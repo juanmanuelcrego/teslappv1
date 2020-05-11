@@ -1,0 +1,38 @@
+﻿<h3 *ngIf="isAddMode" class="text-center">Agregar batería</h3>
+<h3 *ngIf="!isAddMode" class="text-center">Editar batería</h3>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="name">Nombre</label>
+            <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">El campo del nombre es obligatorio!</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="voltaje">Voltaje</label>
+            <input type="number" formControlName="voltaje" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.voltaje.errors }" />
+            <div *ngIf="submitted && f.voltaje.errors" class="invalid-feedback">
+                <div *ngIf="f.voltaje.errors.required">El campo del voltaje es obligatorio!</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="temperatura">Temperatura</label>
+            <input type="number" formControlName="temperatura" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.temperatura.errors }" />
+            <div *ngIf="submitted && f.temperatura.errors" class="invalid-feedback">
+                <div *ngIf="f.temperatura.errors.required">El campo de la temperatura es obligatorio!</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center">
+        <button [disabled]="loading" class="btn btn-danger mr-2">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Guardar
+        </button>
+        <a routerLink="/baterias" class="btn btn-dark">Cancelar</a>
+    </div>
+</form>
