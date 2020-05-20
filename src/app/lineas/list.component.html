@@ -1,10 +1,10 @@
 ﻿<h1>Corriente</h1>
-<a routerLink="add" class="btn btn-sm btn-danger mb-2">Agregar línea</a>
+<a routerLink="add" class="btn btn-sm btn-danger mb-2">Agregar corriente</a>
 <table class="table table-striped">
     <thead>
         <tr>
             <th style="width: 30%">Nombre</th>
-            <th style="width: 30%">Tensión</th>
+            <th style="width: 30%">Corriente</th>
             <th style="width: 30%">Fecha</th>
             <th style="width: 10%">Acciones</th>
         </tr>
@@ -12,7 +12,7 @@
     <tbody>
         <tr *ngFor="let linea of lineas">
             <td>{{linea.name}}</td>
-            <td>{{linea.tension}}</td>
+            <td>{{linea.tension}}A</td>
             <td>{{todayString | date}}</td>
             <td style="white-space: nowrap">
                 <a routerLink="edit/{{linea.id}}" class="btn btn-sm btn-danger mr-1">Editar</a>

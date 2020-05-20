@@ -78,7 +78,7 @@ export class AddEditLinea implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    this.alertService.success('Se actualizó la línea', { keepAfterRouteChange: true });
+                    this.alertService.success('Se actualizó la corriente', { keepAfterRouteChange: true });
                     this.router.navigate(['..', { relativeTo: this.route }]);
                 },
                 error => {

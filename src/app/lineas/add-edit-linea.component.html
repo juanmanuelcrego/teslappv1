@@ -1,5 +1,5 @@
-﻿<h3 *ngIf="isAddMode" class="text-center">Agregar línea</h3>
-<h3 *ngIf="!isAddMode" class="text-center">Editar línea</h3>
+﻿<h3 *ngIf="isAddMode" class="text-center">Agregar corriente</h3>
+<h3 *ngIf="!isAddMode" class="text-center">Editar corriente</h3>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-row">
         <div class="form-group col">
@@ -12,10 +12,10 @@
     </div>
     <div class="form-row">
         <div class="form-group col">
-            <label for="tension">Tensión</label>
+            <label for="tension">Corriente</label>
             <input type="number" formControlName="tension" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tension.errors }" />
             <div *ngIf="submitted && f.tension.errors" class="invalid-feedback">
-                <div *ngIf="f.tension.errors.required">El campo de la tensión es obligatorio!</div>
+                <div *ngIf="f.tension.errors.required">El campo de la corriente es obligatorio!</div>
             </div>
         </div>
     </div>

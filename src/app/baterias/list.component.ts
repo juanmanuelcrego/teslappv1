@@ -1,19 +1,27 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { first } from 'rxjs/operators';
 
 import { HttpBaterias } from '../_services';
 
-@Component({ templateUrl: 'list.component.html' })
-export class ListComponent implements OnInit {
+@Component({ selector:'list-bat', templateUrl: 'list.component.html' })
+export class ListComponent implements OnInit, AfterViewInit {
     baterias = null;
     todayString: string = new Date().toDateString();
+
+    @ViewChild("prueba") prueba: ElementRef
+    @ViewChild("pruebas") pruebas: ElementRef
 
     constructor(private httpBaterias: HttpBaterias) {}
 
     ngOnInit() {
         this.httpBaterias.getAll()
             .pipe(first())
-            .subscribe(baterias => this.baterias = baterias);       
+            .subscribe(baterias => this.baterias = baterias); 
+    }
+
+    ngAfterViewInit() {
+        console.log(this.prueba.nativeElement.innerHTML)
+
     }
 
     deleteBateria(id: string) {

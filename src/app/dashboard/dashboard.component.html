@@ -1,0 +1,289 @@
+<div #loader class="loader">
+    <div class="spin"></div>
+    <label>Cargando datos...</label>
+</div>
+<ngb-tabset class="tabset" type="pills" [destroyOnHide]="false" [justify]="currentJustify">
+    <ngb-tab class="navigation" title="Baterías">
+        <ng-template ngbTabContent>
+<!-- <a routerLink="/baterias/add" class="btn btn-sm btn-danger mb-2">Agregar batería</a> -->
+<table class="table table-striped" ng-init={reload()}>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Voltaje</th>
+            <th><i hidden class="fas fa-battery-three-quarters"></i></th>
+            <th>Temperatura</th>
+            <th><i hidden class="fas fa-thermometer-three-quarters"></i></th>
+            <th>Fecha</th>
+            <th hidden>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Bateria 1</td>
+            <td #bat1>12.38</td>
+            <td><i class="fas fa-battery-three-quarters icon"></i></td>
+            <td #temp1>17</td>
+            <td><i class="fas fa-thermometer-three-quarters icon2"></i></td>
+            <td>{{todayString | date}}</td>
+        </tr>
+        <tr>
+            <td>Bateria 2</td>
+            <td #bat2>12</td>
+            <td><i class="fas fa-battery-three-quarters icon"></i></td>
+            <td #temp2>15</td>
+            <td><i class="fas fa-thermometer-three-quarters icon2"></i></td>
+            <td>{{todayString | date}}</td>
+        </tr>
+        <tr>
+            <td>Bateria 3</td>
+            <td #bat3>11</td>
+            <td><i class="fas fa-battery-three-quarters icon"></i></td>
+            <td #temp3>19</td>
+            <td><i class="fas fa-thermometer-three-quarters icon2"></i></td>
+            <td>{{todayString | date}}</td>
+        </tr>
+        <tr>
+            <td>Bateria 4</td>
+            <td #bat4>10</td>
+            <td><i class="fas fa-battery-three-quarters icon"></i></td>
+            <td #temp4>11</td>
+            <td><i class="fas fa-thermometer-three-quarters icon2"></i></td>
+            <td>{{todayString | date}}</td>
+        </tr>
+        <tr>
+            <td>Bateria 5</td>
+            <td #bat5>11.30</td>
+            <td><i class="fas fa-battery-three-quarters icon"></i></td>
+            <td #temp5>18</td>
+            <td><i class="fas fa-thermometer-three-quarters icon2"></i></td>
+            <td>{{todayString | date}}</td>
+        </tr>
+        <tr *ngFor="let bateria of baterias">
+            <td>{{bateria.name}}</td>
+            <td #batdb>{{bateria.voltaje}}</td>
+            <td><i class="fas fa-battery-three-quarters icon"></i></td>
+            <td #tempdb>{{bateria.temperatura}}</td>
+            <td><i class="fas fa-thermometer-three-quarters icon2"></i></td>
+            <td>{{todayString | date}}</td>
+            <td hidden style="white-space: nowrap">
+                <a routerLink="edit/{{bateria.id}}" class="btn btn-sm btn-danger mr-1">Editar</a>
+                <button (click)="deleteBateria(bateria.id)" class="btn btn-sm btn-dark" [disabled]="bateria.isDeleting">
+                    <span *ngIf="bateria.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!bateria.isDeleting" class='p-0'>Eliminar</span>
+                </button>
+            </td>
+        </tr>
+        <tr *ngIf="!baterias">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table class="chart">
+    <tr>
+        <thead>
+            <th class="th-volt">12.38V</th>
+            <th>|</th>
+            <th class="th-temp">20°</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </thead>
+    </tr>
+    <tr></tr>
+    <tr></tr>
+    <tr>
+        <thead class="chart-th">
+            <th class="th-volt">09V</th>
+            <th>|</th>
+            <th class="th-temp">15°</th>
+        </thead>
+    </tr>
+    <tr></tr>
+    <tr></tr>
+    <tr>
+        <thead class="chart-th">
+            <th class="th-volt">00V</th>
+            <th>|</th>
+            <th class="th-temp">0°</th>
+        </thead>
+        <tbody class="a">
+            <td #chartvol1 class="td-col col1"><label #chartvol1txt></label></td>
+            <td #charttemp1 class="td-col col2"><label #charttemp1txt></label></td>
+        </tbody>
+        <tbody class="a" style="margin-left: 0;">
+            <td #chartvol2 class="td-col col1"><label #chartvol2txt></label></td>
+            <td #charttemp2 class="td-col col2"><label #charttemp2txt></label></td>
+        </tbody>
+        <tbody class="a" style="margin-left: 0;">
+            <td #chartvol3 class="td-col col1"><label #chartvol3txt></label></td>
+            <td #charttemp3 class="td-col col2"><label #charttemp3txt></label></td>
+        </tbody>
+        <tbody class="a" style="margin-left: 0;">
+            <td #chartvol4 class="td-col col1"><label #chartvol4txt></label></td>
+            <td #charttemp4 class="td-col col2"><label #charttemp4txt></label></td>
+        </tbody>
+        <tbody class="a" style="margin-left: 0;">
+            <td #chartvol5 class="td-col col1"><label #chartvol5txt></label></td>
+            <td #charttemp5 class="td-col col2"><label #charttemp5txt></label></td>
+        </tbody>
+    </tr>
+    <tr>
+        <tbody class="td-bats">
+            <td style="width: 05vw;"></td>
+            <td>Bateria 1</td>
+            <td>Bateria 2</td>
+            <td>Bateria 3</td>
+            <td>Bateria 4</td>
+            <td>Bateria 5</td>
+        </tbody>
+    </tr>
+    <tr>
+        <tbody class="row">
+            <td>
+                Voltaje:
+                <label class="muestra volt"></label>
+            </td>
+            <td></td>
+            <td>|</td>
+            <td></td>
+            <td>
+                Temperatura:
+                <label class="muestra temp"></label>
+            </td>
+        </tbody>
+    </tr>
+</table>
+</ng-template>
+</ngb-tab>
+    <ngb-tab>
+        <ng-template ngbTabTitle>Corriente</ng-template>
+        <ng-template ngbTabContent>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Corriente</th>
+                        <th><i hidden class="fas fa-bolt icon"></i></th>
+                        <th>Fecha</th>
+                        <th hidden>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Corriente 1</td>
+                        <td #cor1>18</td>
+                        <td><i class="fas fa-bolt icon"></i></td>
+                        <td>{{todayString | date}}</td>
+                    </tr>
+                    <tr>
+                        <td>Corriente 2</td>
+                        <td #cor2>19</td>
+                        <td><i class="fas fa-bolt icon"></i></td>
+                        <td>{{todayString | date}}</td>
+                    </tr>
+                    <tr>
+                        <td>Corriente 3</td>
+                        <td #cor3>18</td>
+                        <td><i class="fas fa-bolt icon"></i></td>
+                        <td>{{todayString | date}}</td>
+                    </tr>
+                    <tr>
+                        <td>Corriente 4</td>
+                        <td #cor4>19</td>
+                        <td><i class="fas fa-bolt icon"></i></td>
+                        <td>{{todayString | date}}</td>
+                    </tr>
+                    <tr>
+                        <td>Corriente 5</td>
+                        <td #cor5>18</td>
+                        <td><i class="fas fa-bolt icon"></i></td>
+                        <td>{{todayString | date}}</td>
+                    </tr>
+                    <tr *ngFor="let linea of lineas">
+                        <td>{{linea.name}}</td>
+                        <td>{{linea.tension}}</td>
+                        <td><i class="fas fa-bolt icon"></i></td>
+                        <td>{{todayString | date}}</td>
+                        <!-- <td hidden style="white-space: nowrap">
+                            <a routerLink="edit/{{linea.id}}" class="btn btn-sm btn-danger mr-1">Editar</a>
+                            <button (click)="deleteLinea(linea.id)" class="btn btn-sm btn-dark" [disabled]="linea.isDeleting">
+                                <span *ngIf="linea.isDeleting" class="spinner-border spinner-border-sm"></span>
+                                <span *ngIf="!linea.isDeleting" class='p-0'>Eliminar</span>
+                            </button>
+                        </td> -->
+                    </tr>
+                    <tr *ngIf="!lineas">
+                        <td colspan="4" class="text-center">
+                            <span class="spinner-border spinner-border-lg align-center"></span>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+                <table class="chart">
+                    <tr>
+                        <thead>
+                            <th class="th-volt">20A</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </thead>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <thead class="chart-th">
+                            <th class="th-volt">10A</th>
+                        </thead>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <thead class="chart-th">
+                            <th class="th-volt">00A</th>
+                        </thead>
+                        <tbody class="a">
+                            <td #chartcor1 class="td-col col1"><label #chartcor1txt></label></td>
+                        </tbody>
+                        <tbody class="a" style="margin-left: 0;">
+                            <td #chartcor2 class="td-col col1"><label #chartcor2txt></label></td>
+                        </tbody>
+                        <tbody class="a" style="margin-left: 0;">
+                            <td #chartcor3 class="td-col col1"><label #chartcor3txt></label></td>
+                        </tbody>
+                        <tbody class="a" style="margin-left: 0;">
+                            <td #chartcor4 class="td-col col1"><label #chartcor4txt></label></td>
+                        </tbody>
+                        <tbody class="a" style="margin-left: 0;">
+                            <td #chartcor5 class="td-col col1"><label #chartcor5txt></label></td>
+                        </tbody>
+                    </tr>
+                    <tr>
+                        <tbody class="td-bats">
+                            <td style="width: 05vw;"></td>
+                            <td>Corriente 1</td>
+                            <td>Corriente 2</td>
+                            <td>Corriente 3</td>
+                            <td>Corriente 4</td>
+                            <td>Corriente 5</td>
+                        </tbody>
+                    </tr>
+                    <tr>
+                        <tbody class="row">
+                            <td>
+                                Corriente:
+                                <label class="muestra volt"></label>
+                            </td>
+                        </tbody>
+                    </tr>
+                </table>
+        </ng-template>
+    </ngb-tab>
+</ngb-tabset>
+

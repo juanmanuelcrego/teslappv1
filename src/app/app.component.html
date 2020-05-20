@@ -1,14 +1,15 @@
 <section class="jc-header" *ngIf="user">
   <div class="title">
-      <label>Teslapp</label>
+      <a routerLink="/dashboard"><label>Teslapp</label></a>
   </div>
   <nav class="navbar navbar-expand" *ngIf="user">
       <div class="navbar-nav">
-          <a class="btn text-white" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="fas fa-home icon"></i></a>
-          <label>|</label>
-          <a class="btn text-white" (click)="logout()"><i class="fas fa-sign-out-alt icon"></i></a>
-      </div>
+          <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+          <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">ABM</a>
+          <a (click)="logout()">Salir</a>
+      </div>    
   </nav>
+  
 </section>
 
 <div class="app-container">
