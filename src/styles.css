@@ -80,7 +80,7 @@ a { cursor: pointer; outline: none; }
 .jc-header .navbar.navbar-expand .navbar-nav a{
     color: whitesmoke;
     text-decoration: none;
-    font-weight: 800;
+    font-weight: 300;
     margin-left: 0.5vw;
     margin-right: 0.5vw;
     padding: 0 0.5vw 0 0.5vw;

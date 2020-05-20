@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'lineas', loadChildren: lineaModule, canActivate: [AuthGuard]},
   { path: 'account', loadChildren: accountModule },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'home', component: HomeComponent },
   { path: '**', redirectTo: '' }
 ];
 
