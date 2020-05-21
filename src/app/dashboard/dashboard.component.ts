@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     @ViewChild("bat4") bat4: ElementRef
     @ViewChild("bat5") bat5: ElementRef
     // Datos de la db
-    @ViewChild("batdb") batdb: ElementRef
+    // @ViewChild("batdb") batdb: ElementRef
 
     // Elementos de la temperatura de las baterias
     @ViewChild("temp1") temp1: ElementRef
@@ -36,7 +36,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     @ViewChild("temp4") temp4: ElementRef
     @ViewChild("temp5") temp5: ElementRef
     // Datos de la db
-    @ViewChild("tempdb") tempdb: ElementRef
+    // @ViewChild("tempdb") tempdb: ElementRef
 
     // Elementos de corriente
     @ViewChild("cor1") cor1: ElementRef
@@ -105,7 +105,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
           let bat4 = this.bat4.nativeElement
           let bat5 = this.bat5.nativeElement
           // Datos de la db
-          let batdb = this.batdb.nativeElement
+          // let batdb = this.batdb.nativeElement
 
           // Elementos de la temperatura de las baterias
           let temp1 = this.temp1.nativeElement
@@ -114,7 +114,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
           let temp4 = this.temp4.nativeElement
           let temp5 = this.temp5.nativeElement
           // Datos de la db
-          let tempdb = this.tempdb.nativeElement
+          // let tempdb = this.tempdb.nativeElement
 
           // Elementos de corriente 
           let cor1 = this.cor1.nativeElement
@@ -175,7 +175,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             bat4.innerHTML <= 13 ||
             bat5.innerHTML <= 13 ||
             // Datos de la db
-            batdb.innerHTML <= 13 ||
+            // batdb.innerHTML <= 13 ||
             // Temperatura baterias
             temp1.innerHTML <= 20 ||
             temp2.innerHTML <= 20 ||
@@ -183,7 +183,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             temp4.innerHTML <= 20 ||
             temp5.innerHTML <= 20 ||
             // Datos de la db
-            tempdb.innerHTML <= 20 ||
+            // tempdb.innerHTML <= 20 ||
 
             // Corriente
             cor1.innerHTML <= 20 ||
@@ -215,7 +215,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
               chartvol5.style.display = 'flex'
               chartvol5txt.innerHTML = resultado5 + 'V'
               // Datos de la db
-              let resultadodb = batdb.innerHTML = parseFloat(batdb.innerHTML) - porcentaje
+              // let resultadodb = batdb.innerHTML = parseFloat(batdb.innerHTML) - porcentaje
               // Voltaje de las baterias
               //Se determina que haya solo dos decimales despues de la coma
               bat1.innerHTML = resultado1.toFixed(2)
@@ -224,7 +224,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
               bat4.innerHTML = resultado4.toFixed(2)
               bat5.innerHTML = resultado5.toFixed(2)
               // Datos de la db
-              batdb.innerHTML = resultadodb.toFixed(2)
+              // batdb.innerHTML = resultadodb.toFixed(2)
 
               // Temperatura de las baterias
               let resultadoTemp1 = temp1.innerHTML = parseFloat(temp1.innerHTML) - porcentajeTemp
@@ -248,7 +248,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
               chartvol5.style.display = 'flex'
               charttemp5txt.innerHTML = resultadoTemp5 + '°'
               // Datos de la db
-              let resultadoTempdb = tempdb.innerHTML = parseFloat(tempdb.innerHTML) - porcentajeTemp
+              // let resultadoTempdb = tempdb.innerHTML = parseFloat(tempdb.innerHTML) - porcentajeTemp
               // Temperatura de las baterias
               //Se determina que haya solo dos decimales despues de la coma
               temp1.innerHTML = resultadoTemp1.toFixed(2)
@@ -257,7 +257,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
               temp4.innerHTML = resultadoTemp4.toFixed(2)
               temp5.innerHTML = resultadoTemp5.toFixed(2)
               // Datos de la db
-              tempdb.innerHTML = resultadoTempdb.toFixed(2)
+              // tempdb.innerHTML = resultadoTempdb.toFixed(2)
 
               // Corriente 
               let resultadoCor1 = cor1.innerHTML = parseFloat(cor1.innerHTML) - porcentajeCor
@@ -290,7 +290,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             bat4.innerHTML < 12 ||
             bat5.innerHTML < 12 ||
             // Datos de la db
-            batdb.innerHTML < 12 ||
+            // batdb.innerHTML < 12 ||
             // Temperatura de las baterias
             temp1.innerHTML < 20 ||
             temp2.innerHTML < 20 ||
@@ -298,7 +298,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             temp4.innerHTML < 20 ||
             temp5.innerHTML < 20 ||
             // Datos de la db
-            tempdb.innerHTML < 20 ||
+            // tempdb.innerHTML < 20 ||
 
             // Corriente
             cor1.innerHTML < 20 ||
@@ -324,7 +324,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             chartvol5.style.height = '40vh'
             chartvol5txt.innerHTML = resultado5 + 'V'
             // Datos de la db
-            let resultadodb = batdb.innerHTML = parseFloat(batdb.innerHTML) + porcentaje + porcentaje
+            // let resultadodb = batdb.innerHTML = parseFloat(batdb.innerHTML) + porcentaje + porcentaje
 
             // Temperatura de las baterias
             let resultadoTemp1 = temp1.innerHTML = parseFloat(temp1.innerHTML) + porcentajeTemp + porcentajeTemp            
@@ -343,7 +343,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             charttemp5.style.height = '48vh'
             charttemp5txt.innerHTML = resultadoTemp5 + '°'
             // Datos de la db
-            let resultadoTempdb = tempdb.innerHTML = parseFloat(tempdb.innerHTML) + porcentajeTemp + porcentajeTemp
+            // let resultadoTempdb = tempdb.innerHTML = parseFloat(tempdb.innerHTML) + porcentajeTemp + porcentajeTemp
 
             // Corriente
             let resultadoCor1 = cor1.innerHTML = parseFloat(cor1.innerHTML) + porcentajeCor 
@@ -369,7 +369,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             bat4.innerHTML = resultado4.toFixed(2)
             bat5.innerHTML = resultado5.toFixed(2)
             // Datos de la db
-            batdb.innerHTML = resultadodb.toFixed(2)
+            // batdb.innerHTML = resultadodb.toFixed(2)
 
             // Temperatura de las baterias
             temp1.innerHTML = resultadoTemp1.toFixed(2)
@@ -378,7 +378,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             temp4.innerHTML = resultadoTemp4.toFixed(2)
             temp5.innerHTML = resultadoTemp5.toFixed(2)
             // Datos de la db
-            tempdb.innerHTML = resultadoTempdb.toFixed(2)
+            // tempdb.innerHTML = resultadoTempdb.toFixed(2)
           }
 
           if(
@@ -389,7 +389,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             bat4.innerHTML > 12 ||
             bat5.innerHTML > 12 ||
             // Datos de la db
-            batdb.innerHTML > 12 ||
+            // batdb.innerHTML > 12 ||
 
             // Temperatura de las baterias
             temp1.innerHTML > 20 || temp1.innerHTML < 10 ||
@@ -398,7 +398,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             temp4.innerHTML > 20 || temp4.innerHTML < 10 ||
             temp5.innerHTML > 20 || temp5.innerHTML < 10 ||
             // Datos de la db
-            tempdb.innerHTML > 20 || tempdb.innerHTML < 10 ||
+            // tempdb.innerHTML > 20 || tempdb.innerHTML < 10 ||
 
             // Corriente
             cor1.innerHTML > 20 || cor1.innerHTML < 18 ||
@@ -429,7 +429,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             chartvol5.style.display = 'flex'
             chartvol5txt.innerHTML = resultado5 + 'V'
             // Datos de la db
-            let resultadodb = batdb.innerHTML = 12.38
+            // let resultadodb = batdb.innerHTML = 12.38
 
             // Temperatura de las baterias
             let resultadoTemp1 = temp1.innerHTML = 17
@@ -453,7 +453,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             charttemp5.style.display = 'flex'
             charttemp5txt.innerHTML = resultadoTemp5 + '°'
             // Datos de la db
-            let resultadoTempdb = tempdb.innerHTML = 20
+            // let resultadoTempdb = tempdb.innerHTML = 20
 
             // Corriente
             let resultadoCor1 = cor1.innerHTML = 18
@@ -484,7 +484,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             bat4.innerHTML = resultado4.toFixed(2)
             bat5.innerHTML = resultado5.toFixed(2)
             // Datos de la db
-            batdb.innerHTML = resultadodb.toFixed(2)
+            // batdb.innerHTML = resultadodb.toFixed(2)
 
             // Temperatura de las baterias
             temp1.innerHTML = resultadoTemp1.toFixed(2)
@@ -493,7 +493,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
             temp4.innerHTML = resultadoTemp4.toFixed(2)
             temp5.innerHTML = resultadoTemp5.toFixed(2)
             // Datos de la db
-            tempdb.innerHTML = resultadoTempdb.toFixed(2)
+            // tempdb.innerHTML = resultadoTempdb.toFixed(2)
           }
         }, 10000)
       }
